@@ -1,0 +1,29 @@
+﻿@using Dojodachi.Models;
+@model Pet;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h3>Fullness: @Model.Fullness   Happiness: @Model.Happiness   Meals: @Model.Meal   Energy: @Model.Energy </h3>
+@{
+    if(Model.Fullness >= 100 && Model.Happiness >= 100 && Model.Energy >= 100)
+    {
+        <p>Congratulations! You won !!!</p>
+        <a class="btn btn-success" href="/restart" role="button">Restart ?</a>
+    }
+    else if(Model.Fullness <= 0 || Model.Happiness <= 0 || Model.Energy <= 0)
+    {
+        <p>Your Dojodachi has passed away ......</p>
+        <a class="btn btn-success" href="/restart" role="button">Restart ?</a>
+    }
+    else
+    {
+        <p>@ViewBag.info</p>
+        <br>
+        <a class="btn btn-success" href="/feed" role="button">Feed</a>
+        <a class="btn btn-success" href="/play" role="button">Play</a>
+        <a class="btn btn-success" href="/work" role="button">Work</a>
+        <a class="btn btn-success" href="/sleep" role="button">Sleep</a>
+    }
+}
